@@ -2,7 +2,7 @@
   <header class="heading">
     <div style="position: absolute;">
       <div class="headclass" style="margin-top: 15vw;margin-left: 6vw;">
-        <p>My Movie App</p>
+        <p>Saurav Movie App</p>
         <h1>Now Streaming</h1>
         <button> View Movies</button>
       </div>
