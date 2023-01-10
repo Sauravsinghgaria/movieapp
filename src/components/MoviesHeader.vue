@@ -13,11 +13,15 @@
 export default {
   name: 'MoviesHeader',
 
+
 }
+
 </script>
-<style scoped>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600&display=swap');
+
 *{
-  font-family: Gugi,Cursive,Arial;
+  font-family: 'Karla',sans-Serif;
 }
 .heading{
   background-image: url("../assets/movieHero.jpg");

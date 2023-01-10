@@ -1,38 +1,18 @@
 <template>
     <div class="all">
       <div>
-        <input type="text" placeholder="Enter Your Search" class="inp">
-        <button class="btn"> Clear Search</button>
+        <input type="text" placeholder="Enter Your Search" v-model="querystr" class="inp">
+        <button class="btn" @click="search" > Clear Search</button>
       </div>
-      <div class="cards">
-        <img src="" alt="image1">
-        <h2>Titles</h2>
-        <p>Released: Date</p>
-        <button type="button" class="btn2">Get More Info</button>
-      </div>
-      <div class="cards">
-        <img src="" alt="image1">
-        <h2>Titles</h2>
-        <p>Released: Date</p>
-        <button type="button" class="btn2">Get More Info</button>
-      </div>
-      <div class="cards">
-        <img src="" alt="image1">
-        <h2>Titles</h2>
-        <p>Released: Date</p>
-        <button type="button" class="btn2">Get More Info</button>
-      </div>
-      <div class="cards">
-        <img src="" alt="image1">
-        <h2>Titles</h2>
-        <p>Released: Date</p>
-        <button type="button" class="btn2">Get More Info</button>
-      </div>
-      <div class="cards">
-        <img src="" alt="image1">
-        <h2>Titles</h2>
-        <p>Released: Date</p>
-        <button type="button" class="btn2">Get More Info</button>
+      <div class="cards" v-for="(res,index) in movname.results" :key="index">
+        <div>
+          <span class="xyz">{{res.vote_average}}</span>
+          <img :src="`https://image.tmdb.org/t/p/w500/${res.poster_path}`" class="images" alt="errorimage">
+          <h2>{{res.original_title}}</h2>
+          <p>Released: {{res.release_date}}</p>
+          <button type="button" class="btn btn2" @click="info">Get More Info</button>
+        </div>
+
       </div>
     </div>
 </template>
@@ -40,20 +20,52 @@
 <script>
 export default {
   name: 'MoviesData',
+  data(){
+    return{
+      querystr:"",
+      movname:[],
+    }
+  },
+  mounted(){
+    fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=bb5c9a25161603cb7d1205e55e4cbe88&language=en-US&page=1")
+        .then((res)=>res.json())
+        .then(data => this.movname = data)
+        .catch(err => console.log(err))
+  },
+  methods:{
+    search(){
+      fetch("https://api.themoviedb.org/3/search/movie?api_key=bb5c9a25161603cb7d1205e55e4cbe88&query="+this.querystr+"\"")
+          .then((res)=>res.json())
+          .then(data => this.movname = data)
+          .catch(err => console.log(err))
+    },
+    info(){
 
+    }
+  }
 }
 </script>
 <style>
-.cards{
-  margin-left: 6vw;
-  margin-top: 4vw;
-  display:inline-block;
+.xyz{
+  float: left;
+  margin-bottom: -30px;
+  position: relative;
+  background-color: orangered;
+  padding: 3px;
+  border-bottom-right-radius: 8px;
 }
-.btn2{
-  color:#ffffff;
-  border: 1px solid orangered;
-  background-color: #212121;
+.cards{
+  margin-left: 4vw;
+  margin-top: 5vw;
+  display: inline-flex;
+  width: 20vw;
+  height: 44vw;
+  text-align: center;
+}
 
+.btn2{
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 .all{
   background-color: #212121;
@@ -75,5 +87,10 @@ export default {
   margin-left: 6vw;
   margin-top: 2vw;
   border: 1px solid orangered;
+}
+.images{
+  text-align: center;
+  width: 100%;
+  height: auto;
 }
 </style>
