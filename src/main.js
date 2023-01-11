@@ -9,7 +9,7 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: index},
-  { path: '/MovieDesc/:id', component: MovieDesc },
+  { path: '/:id', component: MovieDesc },
 ]
 const router = new VueRouter({
   routes

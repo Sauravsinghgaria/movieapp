@@ -2,9 +2,9 @@
   <header class="heading">
     <div style="position: absolute;">
       <div class="headclass" style="margin-top: 15vw;margin-left: 6vw;">
-        <p>Saurav Movie App</p>
+        <p>Movie App</p>
         <h1>Now Streaming</h1>
-        <button style="cursor: grab;">View Movies</button>
+        <button type="button" style="cursor: grab;">Movies</button>
       </div>
     </div>
   </header>
