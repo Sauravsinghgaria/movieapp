@@ -1,17 +1,15 @@
 <template>
   <div>
-    <MovieHead/>
-    <MoviesData/>
+
+    <router-view/>
   </div>
 </template>
 <script>
-import MovieHead from "./components/MoviesHeader.vue"
-import MoviesData from "@/components/MoviesData.vue";
+
 export default {
   name: 'App',
   components: {
-    MovieHead,
-    MoviesData
+
   }
 }
 </script>

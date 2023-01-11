@@ -4,7 +4,7 @@
       <div class="headclass" style="margin-top: 15vw;margin-left: 6vw;">
         <p>Saurav Movie App</p>
         <h1>Now Streaming</h1>
-        <button> View Movies</button>
+        <button style="cursor: grab;">View Movies</button>
       </div>
     </div>
   </header>
