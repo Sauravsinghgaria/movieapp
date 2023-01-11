@@ -24,8 +24,7 @@ export default {
   font-family: 'Karla',sans-Serif;
 }
 .heading{
-  background-image: url("../assets/movieHero.jpg");
-
+  background-image:linear-gradient(0deg, rgba(0,0,0,0.52) 0%, rgba(31,28,28,0.73) 100%),url("../assets/movieHero.jpg");
   width:100%;
   height:27vw;
   background-position: center;

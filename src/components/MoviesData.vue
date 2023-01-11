@@ -1,6 +1,6 @@
 <template>
     <div class="all">
-      <div>
+      <div class="seachbar">
         <input type="text" placeholder="Enter Your Search" v-model="querystr" class="inp">
         <button class="btn" @click="search" > Search</button>
       </div>
@@ -8,13 +8,15 @@
         <h1 style="color:white; margin-left:6vw;">No Matches</h1>
       </div>
       <div class="cards" v-else v-for="(res,index) in movname" :key="index">
-        <div >
-          <span class="xyz">{{res.vote_average}}</span>
-          <img :src="`https://image.tmdb.org/t/p/w500/${res.poster_path}`" class="images" alt="errorimage">
-          <p style="display: none">{{res.overview}}</p>
+        <div>
+          <div class="content_img">
+            <span class="xyz">{{res.vote_average}}</span>
+            <img :src="`https://image.tmdb.org/t/p/w500/${res.poster_path}`" class="images" alt="errorimage">
+            <div>{{res.overview}}</div>
+          </div>
           <h2>{{res.original_title}}</h2>
           <p>Released: {{res.release_date}}</p>
-          <button type="button" class="btn btn2" @click="info"><router-link :to="`/MovieDesc/${res.id}`">Get More Info</router-link></button>
+          <button type="button" class="btn btn2" @click="info"><router-link :to="`/MovieDesc/${res.id}`" class="anc">Get More Info</router-link></button>
         </div>
       </div>
     </div>
@@ -58,6 +60,43 @@ export default {
 }
 </script>
 <style>
+.content_img{
+  position: relative;
+}
+
+.content_img div{
+  position: absolute;
+  bottom: 0;
+  background: black;
+  color: white;
+  font-family: sans-serif;
+  visibility: hidden;
+
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.content_img:hover{
+  cursor: pointer;
+}
+
+.content_img:hover div{
+
+  visibility: visible;
+  opacity: 0.9;
+}
+.seachbar{
+  position: sticky;
+  top:0;
+  padding-bottom:2vw ;
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(35,35,35,1) 100%);
+  z-index: 1000;
+}
+.anc{
+  color: #fff;
+  cursor: grab;
+  font-weight: 550;
+  text-decoration: none;
+}
 .xyz{
   float: left;
   margin-bottom: -35px;
