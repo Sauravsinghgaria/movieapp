@@ -5,10 +5,10 @@
         <input type="text" placeholder="Enter Your Search" v-model="querystr" class="inp">
         <button class="btn" @click="search"> Search</button>
         </div>
-        <div style="padding-top: 3vw;">
-          <button @click="decrement"><i class="fa-solid fa-angles-left"></i></button>
-          <span>{{this.indexlist[this.pagenumber]}}</span>
-          <button @click="increment"><i class="fa-solid fa-angles-right"></i></button>
+        <div style="padding-top: 2.5vw;">
+          <button @click="decrement" style="background-color: #212121;"><i style="padding: 6px 0px;" class="fa-solid fa-angles-left"></i></button>
+          <span class="pg"> {{this.indexlist[this.pagenumber]}}</span>
+          <button @click="increment" style="background-color: #212121;"><i style="padding: 6px 0px;" class="fa-solid fa-angles-right"></i></button>
         </div>
       </div>
       <div v-if="movname.length == 0">
@@ -106,6 +106,10 @@ export default {
 }
 </script>
 <style>
+.pg{
+  background-color: orangered;
+  padding:5px 9px;
+}
 .content_img{
   position: relative;
 }
@@ -181,7 +185,6 @@ export default {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   padding: 8px 15px;
-  color: orangered;
   margin-left: 6vw;
   margin-top: 2vw;
   border: 1px solid orangered;
